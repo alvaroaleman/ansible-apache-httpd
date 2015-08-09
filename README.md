@@ -11,6 +11,18 @@ This role manages the Apache HTTP Server
 ## Role Variables
 
 * ``httpd_modules``: List of modules to install and enable, without the mod prefix(list, default: ``[]``)
+* ``httpd_default_template``: The template to use if a vhost doen't have one specified (string)
+* ``httpd_default_vhost_mode``: The octal permissions to use as default for vhosts (string, default: ``0644``)
+
+### httpd_vhosts
+
+``httpd_vhosts`` is a list of vhosts to deploy.
+
+    httpd_vhosts:
+      - name: myvhost
+        template: mytemplate.j2     #Defaults to httpd_default_template if omitted
+        mode: 0600                  #Defaults to httpd_default_vhost_mode if omitted
+        myownvar: HelloWorld!       #You can define your own elements and access them from the template using {{ item.varname }}
 
 ## Example Playbook
 

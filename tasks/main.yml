@@ -31,6 +31,18 @@
     state=absent
     path="{{ httpd_conf_basepath }}/conf.d/{{ item }}"
 
+- name: Add vhosts
+  tags: httpd
+  with_items: httpd_vhosts
+  notify: reload httpd
+  become: true
+  template:
+    dest="{{ httpd_conf_basepath }}/conf.d/{{ item.name }}.conf"
+    src="{{ item.template|default(httpd_default_template) }}"
+    owner=0
+    group=0
+    mode="{{ item.mode|default(httpd_default_vhost_mode) }}"
+
 - name: Ensure service is up and enabled
   tags: httpd
   become: true

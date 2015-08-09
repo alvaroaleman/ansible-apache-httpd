@@ -3,5 +3,13 @@
   vars:
     httpd_modules:
     - ldap
+    httpd_default_template: vhost.j2
+    httpd_vhosts:
+      - name: example.com
+        template: vhost.j2
+        servername: 'example.com'
+        mode: '0600'
+      - name: simple.com
+        servername: simple.com
   roles:
     - { role: ansible-apache-httpd }
