@@ -4,3 +4,4 @@ httpd_packages:
   - httpd
 
 httpd_servicename: 'httpd'
+httpd_modules_pacakge_prefix: 'mod'

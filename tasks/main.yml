@@ -10,11 +10,17 @@
   tags: httpd
   include_vars: "{{ ansible_os_family }}.yml"
 
-- name: Install packages
+- name: Install httpd_server
   tags: httpd
   with_items: httpd_packages
   become: true
   action: "{{ ansible_pkg_mgr }} state=installed name={{ item }}"
+
+- name: Install modules
+  tags: httpd
+  with_items: httpd_modules
+  become: true
+  action: "{{ ansible_pkg_mgr }} state=installed name={{ httpd_modules_pacakge_prefix }}_{{ item }}"
 
 - name: Ensure service is up and enabled
   tags: httpd

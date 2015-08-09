@@ -10,7 +10,7 @@ This role manages the Apache HTTP Server
 
 ## Role Variables
 
-* ``variable_name``: Variable description (<!variable type>, default: ``variable default value``)
+* ``httpd_modules``: List of modules to install and enable, without the mod prefix(list, default: ``[]``)
 
 ## Example Playbook
 
