@@ -5,3 +5,8 @@ httpd_packages:
 
 httpd_servicename: 'httpd'
 httpd_modules_pacakge_prefix: 'mod'
+httpd_conf_basepath: '/etc/httpd'
+httpd_default_vhosts:
+  - autoindex.conf
+  - userdir.conf
+  - welcome.conf

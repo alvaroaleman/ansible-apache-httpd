@@ -2,3 +2,4 @@
 # defaults file for ansible-apache-httpd
 
 httpd_modules: []
+httpd_default_vhosts: []

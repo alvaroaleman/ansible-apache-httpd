@@ -22,6 +22,15 @@
   become: true
   action: "{{ ansible_pkg_mgr }} state=installed name={{ httpd_modules_pacakge_prefix }}_{{ item }}"
 
+- name: Remove default vhosts
+  tags: httpd
+  with_items: httpd_default_vhosts
+  notify: reload httpd
+  become: true
+  file:
+    state=absent
+    path="{{ httpd_conf_basepath }}/conf.d/{{ item }}"
+
 - name: Ensure service is up and enabled
   tags: httpd
   become: true

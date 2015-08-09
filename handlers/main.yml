@@ -1,2 +1,6 @@
 ---
 # handlers file for ansible-apache-httpd
+- name: reload httpd
+  tags: httpd
+  become: true
+  service: name="{{ httpd_servicename }}" state=reloaded
