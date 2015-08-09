@@ -1,36 +1,16 @@
 # ansible-apache-httpd
 
-## Synopsis
-
-Synopsis...
-
 ## Description
 
-Description...
+This role manages the Apache HTTP Server
 
 ## Requirements
 
-Requirements...
+* EL7
 
 ## Role Variables
 
 * ``variable_name``: Variable description (<!variable type>, default: ``variable default value``)
-
-### complex_variable_name
-
-Complex variable documentation...
-
-### another_complex_variable_name
-
-Complex variable documentation...
-
-## Dependencies
-
-Dependencies...
-
-### Dependency variables
-
-Dependency variables documentation...
 
 ## Example Playbook
 
@@ -81,7 +61,7 @@ Ruby with rake and bundler available.
 
 ## Author information
 
-<!Author Name> @<!email_prefix> <!email_suffix>
+Alvaro Aleman
 
 
 <!-- vim: set nofen ts=4 sw=4 et: -->

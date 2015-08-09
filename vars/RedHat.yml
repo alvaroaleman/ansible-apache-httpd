@@ -1,0 +1,6 @@
+---
+
+httpd_packages:
+  - httpd
+
+httpd_servicename: 'httpd'

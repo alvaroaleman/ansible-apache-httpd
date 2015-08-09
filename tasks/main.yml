@@ -1,2 +1,22 @@
 ---
 # tasks file for ansible-apache-httpd
+
+- name: Assert supported platform
+  tags: httpd
+  assert:
+    that: ansible_distribution == 'CentOS' and ansible_distribution_major_version == '7'
+
+- name: Include required vars
+  tags: httpd
+  include_vars: "{{ ansible_os_family }}.yml"
+
+- name: Install packages
+  tags: httpd
+  with_items: httpd_packages
+  become: true
+  action: "{{ ansible_pkg_mgr }} state=installed name={{ item }}"
+
+- name: Ensure service is up and enabled
+  tags: httpd
+  become: true
+  service: name="{{ httpd_servicename}}" state=started enabled=yes
