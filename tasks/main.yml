@@ -43,6 +43,16 @@
     group=0
     mode="{{ item.mode|default(httpd_default_vhost_mode) }}"
 
+- name: Set SEBooleans
+  tags: httpd
+  with_items: httpd_sebooleans
+  when: ansible_os_family  == 'RedHat'
+  become: true
+  seboolean:
+    name: "{{ item.name }}"
+    state: "{{ item.state|default('true') }}"
+    persistent: true
+
 - name: Ensure service is up and enabled
   tags: httpd
   become: true

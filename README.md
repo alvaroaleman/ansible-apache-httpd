@@ -24,6 +24,14 @@ This role manages the Apache HTTP Server
         mode: 0600                  #Defaults to httpd_default_vhost_mode if omitted
         myownvar: HelloWorld!       #You can define your own elements and access them from the template using {{ item.varname }}
 
+### httpd_sebooleans
+
+``httpd_sebooleans`` is a list of sebooleans to adjust.
+
+    httpd_sebooleans:
+      - name: httpd_can_connect_ldap
+        state: false              #Defaults to true if unset
+
 ## Example Playbook
 
     - hosts: all

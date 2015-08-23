@@ -4,6 +4,10 @@
     httpd_modules:
     - ldap
     httpd_default_template: vhost.j2
+    httpd_sebooleans:
+      - name: httpd_can_connect_ldap
+      - name: httpd_can_connect_ldap
+        state: false
     httpd_vhosts:
       - name: example.com
         template: vhost.j2
@@ -11,5 +15,11 @@
         mode: '0600'
       - name: simple.com
         servername: simple.com
+  pre_tasks:
+    - name: Install libsemanage-python
+      tags: httpd
+      when: ansible_os_family == 'RedHat'
+      become: true
+      yum: name=libsemanage-python state=present
   roles:
     - { role: ansible-apache-httpd }
