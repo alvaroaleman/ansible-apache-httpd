@@ -4,3 +4,8 @@
   tags: httpd
   become: true
   service: name="{{ httpd_servicename }}" state=reloaded
+
+- name: restart httpd
+  tags: httpd
+  become: true
+  service: name="{{ httpd_servicename }}" state=restarted

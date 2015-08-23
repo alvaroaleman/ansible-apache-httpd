@@ -13,6 +13,8 @@ This role manages the Apache HTTP Server
 * ``httpd_modules``: List of modules to install and enable, without the mod prefix(list, default: ``[]``)
 * ``httpd_default_template``: The template to use if a vhost doen't have one specified (string)
 * ``httpd_default_vhost_mode``: The octal permissions to use as default for vhosts (string, default: ``0644``)
+* ``httpd_listen_ip``: The IP to listen on (string, default: ``'127.0.0.1'``)
+* ``httpd_listen_port``: The port to listen on (int, default: ``80``)
 
 ### httpd_vhosts
 

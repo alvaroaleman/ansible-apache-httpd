@@ -22,6 +22,17 @@
   become: true
   action: "{{ ansible_pkg_mgr }} state=installed name={{ httpd_modules_pacakge_prefix }}_{{ item }}"
 
+- name: Deploy httpd.conf
+  tags: httpd
+  notify: restart httpd
+  become: true
+  template:
+    src: httpd.conf.j2
+    dest: '/etc/httpd/conf/httpd.conf'
+    owner: '0'
+    group: '0'
+    mode: '0644'
+
 - name: Remove default vhosts
   tags: httpd
   with_items: httpd_default_vhosts
