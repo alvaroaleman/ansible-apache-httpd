@@ -34,6 +34,15 @@ This role manages the Apache HTTP Server
       - name: httpd_can_connect_ldap
         state: false              #Defaults to true if unset
 
+#### httpd_modules_loaded
+
+``httpd_modules_loaded`` is a list of modules that need to be loaded
+
+  httpd_modules_loaded:
+    - name: proxy_wstunnel_module
+      path: 'modules/mod_proxy_wstunnel.so'
+      priority: 00                #Defaults to 99 if unset
+
 ## Example Playbook
 
     - hosts: all

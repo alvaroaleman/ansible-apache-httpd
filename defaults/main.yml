@@ -8,3 +8,4 @@ httpd_default_vhost_mode: '0644'
 httpd_sebooleans: []
 httpd_listen_ip: '127.0.0.1'
 httpd_listen_port: '80'
+httpd_modules_loaded: []

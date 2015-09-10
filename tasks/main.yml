@@ -64,6 +64,15 @@
     state: "{{ item.state|default('true') }}"
     persistent: true
 
+- name: Deploy module conf
+  tags: httpd
+  with_items: httpd_modules_loaded
+  notify: restart httpd
+  become: true
+  template:
+    src=modules.j2
+    dest="{{ httpd_conf_basepath}}/conf.modules.d/{{ item.priority|default('99')}}-{{ item.name}}.conf"
+
 - name: Ensure service is up and enabled
   tags: httpd
   become: true
